@@ -8,7 +8,7 @@ metadata:
 spec:
   project: platform
   source:
-    repoURL: oci://quay.io/jetstack/charts
+    repoURL: https://charts.jetstack.io
     chart: cert-manager
     targetRevision: 1.19.2
     helm:
