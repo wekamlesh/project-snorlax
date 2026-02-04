@@ -1,4 +1,4 @@
-cloudflare_api_token  = "0fKl8VnMWGJXp2aCo0Qhrd7Qekv_uMoKL-FVZm5z"
+cloudflare_api_token  = "006fd9341ce5ff19531d13e88597d8ff5f218"
 cloudflare_account_id = "c03dbc6f7e1be2187be646fd35be1ea2"
 cloudflare_zone_id    = "2f09e3dc8a21efb840cbd4f3cb3f2f01"
 

@@ -25,6 +25,11 @@ spec:
         credentials:
           existingSecret: velero-credentials
         deployNodeAgent: true
+        kubectl:
+          image:
+            repository: rancher/kubectl
+            tag: v1.28.9
+            pullPolicy: IfNotPresent
   destination:
     server: https://kubernetes.default.svc
     namespace: velero
