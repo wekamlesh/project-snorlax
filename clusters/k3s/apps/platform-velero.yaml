@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: velero
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: platform
+  source:
+    repoURL: https://vmware-tanzu.github.io/helm-charts
+    chart: velero
+    targetRevision: 11.1.1
+    helm:
+      values: |
+        configuration:
+          backupStorageLocation:
+            - name: default
+              provider: aws
+              bucket: snorlax-velero-backups
+              config:
+                region: auto
+                s3Url: https://c03dbc6f7e1be2187be646fd35be1ea2.r2.cloudflarestorage.com
+                s3ForcePathStyle: "true"
+        credentials:
+          existingSecret: velero-credentials
+        deployRestic: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: velero
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,18 @@
+cloudflare_api_token  = "CF_API_TOKEN"
+cloudflare_account_id = "CF_ACCOUNT_ID"
+cloudflare_zone_id    = "CF_ZONE_ID"
+
+domain_name = "example.com"
+subdomains  = ["n8n", "grafana", "argocd", "headlamp"]
+
+vm_ipv4 = "203.0.113.10"
+vm_ipv6 = ""
+
+cloudflare_proxied = true
+
+# Set to true only after you have bootstrapped the backend (see README).
+manage_velero_bucket = false
+velero_bucket_name   = "snorlax-velero-backups"
+
+manage_state_bucket = false
+state_bucket_name   = "snorlax-tofu-state"
