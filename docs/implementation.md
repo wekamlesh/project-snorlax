@@ -41,6 +41,24 @@ If you choose option 3, you must add a manual step after Argo sync to patch host
 3. Apply the root application:
    - `kubectl apply -n argocd -f clusters/k3s/root-app.yaml`
 
+### If the Git repo is private (PAT setup)
+If your repo is private, Argo CD needs credentials.
+
+1. Create a GitHub Personal Access Token (fine-grained), with:
+   - Repository access: only this repo
+   - Permissions: Contents read
+2. Create the repo secret in Argo CD:
+   - `kubectl -n argocd create secret generic repo-project-snorlax \\
+     --from-literal=url=https://github.com/wekamlesh/project-snorlax.git \\
+     --from-literal=username=wekamlesh \\
+     --from-literal=password=YOUR_GITHUB_PAT \\
+     --from-literal=type=git \\
+     --dry-run=client -o yaml | kubectl apply -f -`
+3. Label the secret so Argo CD recognizes it:
+   - `kubectl -n argocd label secret repo-project-snorlax argocd.argoproj.io/secret-type=repository`
+4. Force refresh:
+   - `kubectl -n argocd annotate application root argocd.argoproj.io/refresh=hard --overwrite`
+
 ## 4) Bootstrap External Secrets (Doppler)
 1. Create Doppler service token in project `snorlax`, config `prd`.
 2. Add it to the cluster (one-time bootstrap):

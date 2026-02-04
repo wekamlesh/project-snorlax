@@ -24,7 +24,7 @@ spec:
                 s3ForcePathStyle: "true"
         credentials:
           existingSecret: velero-credentials
-        deployRestic: true
+        deployNodeAgent: true
   destination:
     server: https://kubernetes.default.svc
     namespace: velero

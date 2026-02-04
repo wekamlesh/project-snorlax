@@ -8,7 +8,7 @@ metadata:
 spec:
   project: platform
   source:
-    repoURL: oci://ghcr.io/nginx/charts
+    repoURL: https://helm.nginx.com/stable
     chart: nginx-ingress
     targetRevision: 2.4.2
     helm:
