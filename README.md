@@ -40,6 +40,6 @@ If you don't want hostnames or ACME email in Git, we need a render-time injectio
 strategy (for example, Argo CD config-management plugins or encrypted manifests).
 Call this out and we can wire the approach you prefer.
 
-## Kubeconfig
+## Kubeconfig file
 Local k3s kubeconfig path:
 - `/etc/rancher/k3s/k3s.yaml`
